@@ -35,7 +35,19 @@ ruby << EOF
     cls=File.basename(buf.name,'.js')
 
     dirs=dir.split('/')
-    VIM::message dirs.to_s
 
+    dirs.length.times do |i|
+      level=dirs.length - i -1
+      pdir = dirs[0..level].join('/')
+      package_level =dirs.length - 1
+      package = dirs[(level+1)..package_level].join('/')
+      testpath="#{pdir}/tests/#{package}/#{cls}.js}"
+      VIM::message testpath 
+      if File.exists?(testpath)
+        VIM::message testpath  
+        exit
+      end
+    end
+    VIM::message "Tests not found"
 EOF
 endfunction
