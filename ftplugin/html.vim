@@ -27,4 +27,3 @@ EOF
 endfunction
 
 vmap \fm   :!js ~/.vim/plugin/js/runbeautify.js ~/.vim/plugin/js/<cr>
-

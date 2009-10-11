@@ -11,15 +11,28 @@ fun! PsqlLine()
  let s:start_pos = search('{{{','bcnW')
  let s:end_pos = search('}}}','cnW')
  if s:start_pos!=0 && s:end_pos!=0
-   let s:cmd= ':'.s:start_pos.','.s:end_pos.'w !psql '.s:db.' > ~/temp/sqlres'
+   let s:cmd= ':'.s:start_pos.','.s:end_pos.'w !psql '.s:db.' > /tmp/sqlres.txt'
    "echo cmd
    exec s:cmd 
-   ped ~/temp/sqlres
+   ped /tmp/sqlres.txt
  endif
 endfun
 
 fun! PsqlPW()
  let s:db=s:get_db()
- exec 'w !psql '.s:db.' > ~/temp/sqlres'
- ped ~/temp/sqlres
+ exec 'w !psql '.s:db.' > /tmp/sqlres.txt'
+ ped /tmp/sqlres.txt
 endfun
+
+fun! Qb()
+  exec 'new'
+  normal <c-w>o
+  set filetype=sql
+  normal i--db:tahoe
+  normal o--{{{
+  normal o 
+  normal o--}}
+  normal k^i  
+endfun
+
+command! Qb call Qb()
