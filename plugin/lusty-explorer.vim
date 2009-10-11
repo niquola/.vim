@@ -1202,7 +1202,7 @@ class Displayer
 
         exe 'highlight link LustyExpDir Directory'
         exe 'highlight link LustyExpSlash Function'
-        exe 'highlight link LustyExpSelected Type'
+        exe 'highlight link LustyExpSelected MatchParen'
         exe 'highlight link LustyExpModified Special'
         exe 'highlight link LustyExpCurrentBuffer Constant'
         exe 'highlight link LustyExpOpenedFile PreProc'

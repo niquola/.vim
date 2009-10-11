@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/nicola/.vim/plugin'
+let g:netrw_dirhist_2='/home/nicola/.vim'
+let g:netrw_dirhist_3='/home/nicola/.vim/indent'
+let g:netrw_dirhist_4='/home/nicola/.vim'

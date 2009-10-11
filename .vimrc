@@ -7,7 +7,8 @@ colorscheme desert
 set guifont=Terminus\ 14
 " highlite line and column
 set cursorline 
-" set cursorcolumn
+"more colors in terminal
+set t_Co=256
 set nu
 set numberwidth=3
 " change color sheme on mode
@@ -22,7 +23,6 @@ set scrolljump=5
 " Теперь нет необходимости передвигать курсор к краю экрана, чтобы
 " опуститься в режиме редактирования
 set scrolloff=5
-" Выключаем надоедливый "звонок"
 " Формат строки состояния
 set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P 
 set laststatus=2
@@ -51,8 +51,8 @@ filetype plugin indent on
 au! BufRead,BufNewFile *.haml         setfiletype haml 
 " buffer maps  2
 " save
-map <C-S> :w<CR>
-map <C-Q> :q<CR>
+"map <C-S> :w<CR>
+"map <C-Q> :q<CR>
 map <c-tab> :bnext<cr>
 map <s-tab> :bprevious<cr>
 " clipboard
@@ -79,6 +79,7 @@ map <F3> :cnext<cr>
 nmap <s-f> mngg=G`n
 "show buffer explorer
 map <c-space> \lb
+map <s-space> \be
 nmap \fo :!firefox -new-tab %<cr> 
 " Поиск и замена слова под курсором
 nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
@@ -90,6 +91,8 @@ let g:netrw_list_hide='\~$,\~\*$,\.swp$,\.svn'
 "open file in firefox
 au BufNewFile,BufRead *.as set filetype=actionscript
 au BufNewFile,BufRead *.mxml set filetype=mxml
+" fix vimrc
+cabbr vimrc e ~/.vim/.vimrc<cr>
 " expand path to search in dojo 
 " set path=.,/home/nicola/workspaces/rails/medapp_tahoe/public/dojo/app/**3
 " the last string is instructions for vim about this file

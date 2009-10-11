@@ -1,3 +1,6 @@
+"formatting ruby - nicola
+nmap <buffer> <c-f> me:%!rbeautify<cr>`e
+
 " Vim filetype plugin
 " Language:		Ruby
 " Maintainer:		Gavin Sinclair <gsinclair at gmail.com>
