@@ -31,7 +31,7 @@ syn keyword psqlKeyword	unique user validate values view whenever
 syn keyword psqlKeyword	where with option order privileges procedural
 syn keyword psqlKeyword	public resource return row rowlabel rownum rows
 syn keyword psqlKeyword	session share size type using close open
-syn keyword psqlKeyword	declare constraint join temporary sequence
+syn keyword psqlKeyword	declare constraint join temporary sequence limit offset
 syn keyword psqlKeyword	inner outer cross natural full left right
 syn keyword psqlKeyword	language handler trusted untrusted validator
 
