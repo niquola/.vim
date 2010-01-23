@@ -1,6 +1,6 @@
-if exists("g:loaded_js101")
-  finish
-endif
+"if exists("g:loaded_js101")
+  "finish
+"endif
 " sudo apt-get install spedermonkey-bin
 " set js path 
 let s:path = expand('~/.vim/plugin/js/')
@@ -14,10 +14,9 @@ fun! FormatJs()
 endfun
 "run jslint
 fun! JSLint()
- w
- execute "silent !cat % |js ".s:path."runjslint.js % ".s:path." > ".s:temp_jslint
- execute "cf ".s:temp_jslint
- cw
+ silent execute "silent !cat % |js ".s:path."runjslint.js % ".s:path." > ".s:temp_jslint
+ silent execute "silent cf ".s:temp_jslint
+ botright cw
 endfun
 
 let g:loaded_js101='loaded'

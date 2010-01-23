@@ -31,7 +31,7 @@ fun! Qb()
   normal i--db:tahoe
   normal o--{{{
   normal o 
-  normal o--}}
+  normal o--}}}
   normal k^i  
 endfun
 

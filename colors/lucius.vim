@@ -25,7 +25,7 @@ let g:colors_name="lucius"
 
 " Base color
 " ----------
-hi Normal           guifg=#e4e4e4           guibg=#242424
+hi Normal           guifg=#e4e4e4           guibg=#111111
 hi Normal           ctermfg=254             ctermbg=235
 
 
@@ -281,6 +281,11 @@ hi Folded           ctermfg=249             ctermbg=23              cterm=none
 " column on side used to indicated open and closed folds
 hi FoldColumn       guifg=#c0c0c0           guibg=#305060           gui=none
 hi FoldColumn       ctermfg=249             ctermbg=23              cterm=none
+
+hi Folded           guifg=#e4e4e4           guibg=#111111
+hi Folded           ctermfg=254             ctermbg=235
+hi FoldColumn           guifg=#e4e4e4           guibg=#111111
+hi FoldColumn           ctermfg=254             ctermbg=235
 
 
 " Search

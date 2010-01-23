@@ -1,3 +1,4 @@
+
 function! OpenDijitTemplate()
 ruby << EOF
     buf= VIM::Buffer.current
@@ -32,22 +33,71 @@ function! OpenTestFile()
 ruby << EOF
     buf= VIM::Buffer.current
     dir=File.dirname(buf.name)
-    cls=File.basename(buf.name,'.js')
+    cls=File.basename(buf.name)
 
     dirs=dir.split('/')
+    #empty element
+    dirs.delete(-1)
 
     dirs.length.times do |i|
       level=dirs.length - i -1
-      pdir = dirs[0..level].join('/')
+      pdirs = dirs[0..level]
       package_level =dirs.length - 1
-      package = dirs[(level+1)..package_level].join('/')
-      testpath="#{pdir}/tests/#{package}/#{cls}.js}"
-      VIM::message testpath 
+      package = dirs[(level+1)..package_level]
+      testpath=(pdirs + ['tests'] + package + [cls]).join('/')
       if File.exists?(testpath)
-        VIM::message testpath  
-        exit
+        VIM::command "e #{testpath}" 
+        break
       end
     end
-    VIM::message "Tests not found"
+EOF
+endfunction
+
+function! OpenCssFile()
+ruby << EOF
+    buf= VIM::Buffer.current
+    dir=File.dirname(buf.name)
+    cls=File.basename(buf.name,'.js')
+
+    dirs=dir.split('/')
+    #empty element
+    dirs.delete(-1)
+
+    dirs.length.times do |i|
+      level=dirs.length - i -1
+      pdirs = dirs[0..level]
+      package_level =dirs.length - 1
+      package = dirs[(level+1)..package_level]
+      testpath=(pdirs + ['themes','tundra'] + package + ["#{cls}.css"]).join('/')
+      if File.exists?(testpath)
+        VIM::command "e #{testpath}" 
+        break
+      end
+    end
+EOF
+endfunction
+
+function! OpenCodeFileFromTest()
+ruby << EOF
+    buf= VIM::Buffer.current
+    code = buf.name.gsub!(/\/tests/,'')
+
+    if File.exists?(code)
+      VIM::command "e #{code}" 
+    else
+      VIM::message "Code file #{code} not found"
+    end
+EOF
+endfunction
+
+function! OpenCodeFileFromCss()
+ruby << EOF
+    buf= VIM::Buffer.current
+    code = buf.name.gsub!(/\/themes\/tundra/,'').gsub!(/\.css$/,'.js')
+    if File.exists?(code)
+      VIM::command "e #{code}" 
+    else
+      VIM::message "Code file #{code} not found"
+    end
 EOF
 endfunction

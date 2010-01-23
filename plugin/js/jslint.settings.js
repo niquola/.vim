@@ -1,4 +1,4 @@
-jslintOpts = {
+var jslintOpts = {
 	//adsafe: true,
 	// if ADsafe.org  rules widget pattern should be enforced.
 	//bitwise: true,
@@ -35,7 +35,7 @@ jslintOpts = {
 	// if the scan should stop on first error
 	//plusplus: true,
 	// if ++ and -- should not be allowed
-	predef: ['document','dojo', 'dijit', 'app', 'kley', 'console', 'dojox','dor','doh','mui'],
+	predef: ['document','setTimeout','clearTimeout','parseToInt','parseToFloat','window','dojo', 'dijit', 'app', 'kley', 'console', 'dojox','dor','doh','mui'],
 	//an array of strings, the names of predefined global variables
 	//regexp: true,
 	// if . should not be allowed in RegExp literals
@@ -49,9 +49,9 @@ jslintOpts = {
 	// if the ES3.1 "use strict"; pragma is required.
 	//sub: true,
 	// if subscript notation may be used for expressions better expressed in dot notation
-	undef: true,
+	undef: true
 	// if undefined global variables are errors
 	//white: true,
 	// if strict whitespace rules apply
 	//widget: false // if the Yahoo Widgets globals should be predefined
-}
+};

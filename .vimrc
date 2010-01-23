@@ -1,7 +1,6 @@
 " Nicolas vimrc
 " use za to close/open foldings
 set nocp      " nocompatible
-colorscheme desert
 "  instal font and use it
 "  sudo apt-get install xfonts-terminus
 set guifont=Terminus\ 14
@@ -61,7 +60,8 @@ nmap <C-V> "+gP
 " open explorer
 map <C-E> :Explore<CR>
 " in normal mode space is visual selection 
-nmap <Space> :!
+nmap <S-b> :BufferExplorer<cr>
+nmap <S-e> :BufExplorer<cr>
 "  2}}}
 " line manipulation maps  2
 " enable eclipse style moving of lines
@@ -80,7 +80,7 @@ nmap <s-f> mngg=G`n
 "show buffer explorer
 map <c-space> \lb
 map <s-space> \be
-nmap \fo :!firefox -new-tab %<cr> 
+nmap \fo :!firefox -new-tab % &<cr> 
 " Поиск и замена слова под курсором
 nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
 " nmap <c-m> :MarksBrowser<cr>
@@ -91,9 +91,10 @@ let g:netrw_list_hide='\~$,\~\*$,\.swp$,\.svn'
 "open file in firefox
 au BufNewFile,BufRead *.as set filetype=actionscript
 au BufNewFile,BufRead *.mxml set filetype=mxml
+set t_Co=256
+colorscheme lucius
 " fix vimrc
 cabbr vimrc e ~/.vim/.vimrc<cr>
-" expand path to search in dojo 
-" set path=.,/home/nicola/workspaces/rails/medapp_tahoe/public/dojo/app/**3
+
 " the last string is instructions for vim about this file
 " vim:ft=vim:fdm=marker:ff=unix:nowrap:tabstop=4:shiftwidth=4:softtabstop=4:smarttab:shiftround:expandtab

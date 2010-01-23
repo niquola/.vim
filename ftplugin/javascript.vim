@@ -10,3 +10,8 @@ iabbr fnc function(){}<esc>3h
 iabbr lfnc function(){console.log(arguments);}
 iabbr clg console.log()<esc>1h
 iabbr mth prop : function(){<cr>}<esc>?<cr>
+
+command! -buffer H call OpenDijitTemplate()
+command! -buffer T call OpenTestFile()
+command! -buffer C call OpenCodeFileFromTest()
+command! -buffer S call OpenCssFile()

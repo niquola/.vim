@@ -27,3 +27,9 @@ EOF
 endfunction
 
 vmap \fm   :!js ~/.vim/plugin/js/runbeautify.js ~/.vim/plugin/js/<cr>
+" for dojo templates
+command! -buffer C call OpenDijitCode()
+
+setlocal makeprg=xmllint
+map <F4> :make %<cr>cw<cr>
+map <silent> <buffer> <F4> :make %<cr>:botright cw<cr>
