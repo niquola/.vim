@@ -50,17 +50,12 @@ set cpo-=C
 "
 "   :make -c %<CR>
 "
-CompilerSet makeprg=ruby\ -w\ $*
+CompilerSet makeprg=ruby 
 
 CompilerSet errorformat=
-    \%+E%f:%l:\ parse\ error,
-    \%W%f:%l:\ warning:\ %m,
-    \%E%f:%l:in\ %*[^:]:\ %m,
-    \%E%f:%l:\ %m,
-    \%-C%\tfrom\ %f:%l:in\ %.%#,
-    \%-Z%\tfrom\ %f:%l,
-    \%-Z%p^,
-    \%-G%.%#
+    \%f:%l:in\ %m,
+    \%+ESyntaxError:\ %f:%l:%m
+
 
 let &cpo = s:cpo_save
 unlet s:cpo_save

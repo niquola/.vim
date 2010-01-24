@@ -3,4 +3,5 @@
 "endif
 "let b:folded = 1
 "call Foldsearch("")
-map <buffer> <F5> :!ruby %<cr>
+compiler ruby
+map <buffer> <F5> :make % <cr>
