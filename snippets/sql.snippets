@@ -1,0 +1,14 @@
+# psql fold
+snippet fld 
+	--{{{${1:fold_name}
+	${2:your_sql}
+	--}}}
+# select 
+snippet sl 
+	SELECT
+	${1:fld_1}
+	,${2:fld_2}
+	FROM ${3:tbl}
+# select 
+snippet jn 
+	JOIN ${1:table} ${2:alias} ON $2.${3:key} = ${4:key}
