@@ -95,6 +95,15 @@ set t_Co=256
 colorscheme lucius
 " fix vimrc
 cabbr vimrc e ~/.vim/.vimrc<cr>
+augroup RubyTests
+    au!
+    autocmd BufRead,BufNewFile *.rb,*.rb
+    \ :compiler ruby
+    autocmd BufRead,BufNewFile *_test.rb,test_*.rb
+    \ :compiler rubyunit
+    autocmd BufRead,BufNewFile *.rb,*.rb
+    \ :map <buffer> <F5> :make %<cr>
+augroup END
 
 " the last string is instructions for vim about this file
 " vim:ft=vim:fdm=marker:ff=unix:nowrap:tabstop=4:shiftwidth=4:softtabstop=4:smarttab:shiftround:expandtab
