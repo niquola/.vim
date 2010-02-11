@@ -104,6 +104,7 @@ augroup RubyTests
     autocmd BufRead,BufNewFile *.rb,*.rb
     \ :map <buffer> <F5> :make %<cr>
 augroup END
+map <F10> :cal VimCommanderToggle()<cr>
 
 " the last string is instructions for vim about this file
 " vim:ft=vim:fdm=marker:ff=unix:nowrap:tabstop=4:shiftwidth=4:softtabstop=4:smarttab:shiftround:expandtab

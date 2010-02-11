@@ -29,6 +29,7 @@ endfunction
 vmap \fm   :!js ~/.vim/plugin/js/runbeautify.js ~/.vim/plugin/js/<cr>
 " for dojo templates
 command! -buffer C call OpenDijitCode()
+command! -buffer S call OpenStyleFromTemplate()
 
 setlocal makeprg=xmllint
 map <F4> :make %<cr>cw<cr>

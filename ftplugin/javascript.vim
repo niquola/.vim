@@ -13,5 +13,6 @@ iabbr mth prop : function(){<cr>}<esc>?<cr>
 
 command! -buffer H call OpenDijitTemplate()
 command! -buffer T call OpenTestFile()
+command! -buffer TH call OpenTestHTMLFile()
 command! -buffer C call OpenCodeFileFromTest()
 command! -buffer S call OpenCssFile()

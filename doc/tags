@@ -305,6 +305,15 @@ surround-mappings	surround.txt	/*surround-mappings*
 surround-replacements	surround.txt	/*surround-replacements*
 surround-targets	surround.txt	/*surround-targets*
 surround.txt	surround.txt	/*surround.txt*
+vimcommander	vimcommander.txt	/*vimcommander*
+vimcommander-contents	vimcommander.txt	/*vimcommander-contents*
+vimcommander-features	vimcommander.txt	/*vimcommander-features*
+vimcommander-install	vimcommander.txt	/*vimcommander-install*
+vimcommander-keys	vimcommander.txt	/*vimcommander-keys*
+vimcommander-links	vimcommander.txt	/*vimcommander-links*
+vimcommander-opts	vimcommander.txt	/*vimcommander-opts*
+vimcommander-todo	vimcommander.txt	/*vimcommander-todo*
+vimcommander.txt	vimcommander.txt	/*vimcommander.txt*
 vs	surround.txt	/*vs*
 yS	surround.txt	/*yS*
 ySS	surround.txt	/*ySS*
