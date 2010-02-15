@@ -1,2 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/nicola/.vim/after/ftplugin'
+let g:netrw_dirhist_2='/home/nicola/.vim/after'
+let g:netrw_dirhist_3='/home/nicola/.vim'
+let g:netrw_dirhist_4='/home/nicola/.vim/ftdetect'
+let g:netrw_dirhist_5='/home/nicola/.vim'
+let g:netrw_dirhist_6='/home/nicola/.vim/ftplugin'

@@ -1,162 +1,86 @@
-function! OpenDijitTemplate()
-ruby << EOF
-    buf= VIM::Buffer.current
-    dir=File.dirname(buf.name)
-    cls=File.basename(buf.name,'.js')
-    template=File.join(dir,'templates',"#{cls}.html")
-
-    if File.exists?(template)
-      VIM::command "e #{template}" 
-    else
-      VIM::message "No template file #{template}"
-    end
-EOF
+function! DojoExtractBaseInfo(file)
+  let i ={}
+  let i.base =  split(a:file,'src/')[0].'src/'
+  let i.path =  split(a:file,'src/')[1]
+  let i.root_module = split(i.path,'/')[0].'/' 
+  let i.class = split(a:file,'/')[-1]
+  let i.module = substitute(i.path,i['root_module'],'','') 
+  let i.module = substitute(i.module,'/'.i['class'],'','') 
+  return i
 endfunction
 
-function! OpenDijitCode()
-ruby << EOF
-def open
-    buf= VIM::Buffer.current
-    if buf.name =~ /test/ 
-      code = buf.name.gsub!(/\/tests/,'').gsub!(/html$/,'js')
-
-      if File.exists?(code)
-        VIM::command "e #{code}" 
-        return 
-      end
-    end
-
-    dir=File.dirname(buf.name)
-    cls=File.basename(buf.name,'.html')
-    code_file=File.join(dir,'..',"#{cls}.js")
-
-    if File.exists?(code_file)
-      VIM::command "e #{code_file}" 
-    else
-      VIM::message "No code_file file #{code_file}"
-    end
-end
-open
-EOF
+function! DojoOpenFile(path)
+  if filereadable(a:path)
+    exec 'e  '.a:path
+  else
+    echo 'File '.a:path.' not exists'
+  endif
 endfunction
 
-function! OpenTestFile()
-ruby << EOF
-    buf= VIM::Buffer.current
-    dir=File.dirname(buf.name)
-    cls=File.basename(buf.name)
-
-    dirs=dir.split('/')
-    #empty element
-    dirs.delete(-1)
-
-    dirs.length.times do |i|
-      level=dirs.length - i -1
-      pdirs = dirs[0..level]
-      package_level =dirs.length - 1
-      package = dirs[(level+1)..package_level]
-      testpath=(pdirs + ['tests'] + package + [cls]).join('/')
-      if File.exists?(testpath)
-        VIM::command "e #{testpath}" 
-        break
-      end
-    end
-EOF
+function! DojoFromCode()
+  return DojoExtractBaseInfo(substitute(expand('%:p'),'.js','',''))
 endfunction
 
-function! OpenTestHTMLFile()
-ruby << EOF
-    buf= VIM::Buffer.current
-    dir=File.dirname(buf.name)
-    cls=File.basename(buf.name)
-
-    dirs=dir.split('/')
-    #empty element
-    dirs.delete(-1)
-
-    dirs.length.times do |i|
-      level=dirs.length - i -1
-      pdirs = dirs[0..level]
-      package_level =dirs.length - 1
-      package = dirs[(level+1)..package_level]
-      testpath=(pdirs + ['tests'] + package + [cls]).join('/').gsub!(/js$/,'html')
-      if File.exists?(testpath)
-        VIM::command "e #{testpath}" 
-        break
-      end
-    end
-EOF
+function! DojoFromTemplate()
+  let base = substitute(expand('%:p'),'templates/','','')
+  let base = substitute(base,'.html','','')
+  return DojoExtractBaseInfo(base)
 endfunction
 
-function! OpenCssFile()
-ruby << EOF
-    buf= VIM::Buffer.current
-    dir=File.dirname(buf.name)
-    cls=File.basename(buf.name,'.js')
-
-    dirs=dir.split('/')
-    #empty element
-    dirs.delete(-1)
-
-    dirs.length.times do |i|
-      level=dirs.length - i -1
-      pdirs = dirs[0..level]
-      package_level =dirs.length - 1
-      package = dirs[(level+1)..package_level]
-      testpath=(pdirs + ['themes','tundra'] + package + ["#{cls}.css"]).join('/')
-      if File.exists?(testpath)
-        VIM::command "e #{testpath}" 
-        break
-      end
-    end
-EOF
+function! DojoFromTestCode()
+  let base = substitute(expand('%:p'),'tests/','','')
+  let base = substitute(base,'.js','','')
+  return DojoExtractBaseInfo(base)
 endfunction
 
-function! OpenCodeFileFromTest()
-ruby << EOF
-    buf= VIM::Buffer.current
-    code = buf.name.gsub!(/\/tests/,'')
-
-    if File.exists?(code)
-      VIM::command "e #{code}" 
-    else
-      VIM::message "Code file #{code} not found"
-    end
-EOF
+function! DojoFromTestPage()
+  let base = substitute(expand('%:p'),'tests/','','')
+  let base = substitute(base,'.html','','')
+  return DojoExtractBaseInfo(base)
 endfunction
 
-
-function! OpenCodeFileFromCss()
-ruby << EOF
-    buf= VIM::Buffer.current
-    code = buf.name.gsub!(/\/themes\/tundra/,'').gsub!(/\.css$/,'.js')
-    if File.exists?(code)
-      VIM::command "e #{code}" 
-    else
-      VIM::message "Code file #{code} not found"
-    end
-EOF
+function! DojoFromStyle()
+  let base = substitute(expand('%:p'),'themes/tundra/','','')
+  let base = substitute(base,'.css','','')
+  return DojoExtractBaseInfo(base)
 endfunction
 
-function! OpenTemplateFileFromCss()
-ruby << EOF
-    buf= VIM::Buffer.current
-    code = buf.name.gsub!(/\/themes\/tundra/,'').gsub!(/\.css$/,'.js')
-
-    cls=File.basename(code,'.js')
-    template=File.join(dir,'templates',"#{cls}.html")
-    if File.exists?(template)
-      VIM::command "e #{template}" 
-    else
-      VIM::message "No template file #{template}"
-    end
-EOF
+function! Dojo2Template(i)
+  let path =  a:i['base'].a:i['root_module'].a:i['module'].'/templates/'.a:i['class'].'.html' 
+  call DojoOpenFile(path)
 endfunction
 
-function! OpenStyleFromTemplate()
-ruby << EOF
-    dir=File.dirname(buf.name)
-    cls=File.basename(buf.name,'.html')
-    VIM::message buf.name
-EOF
+function! Dojo2Code(i)
+  let path =  a:i['base'].a:i['root_module'].a:i['module'].'/'.a:i['class'].'.js' 
+  call DojoOpenFile(path)
 endfunction
+
+function! Dojo2TestCode(i)
+  let path =  a:i['base'].a:i['root_module'].'tests/'.a:i['module'].'/'.a:i['class'].'.js' 
+  call DojoOpenFile(path)
+endfunction
+
+function! Dojo2TestPage(i)
+  let path =  a:i['base'].a:i['root_module'].'tests/'.a:i['module'].'/'.a:i['class'].'.html' 
+  call DojoOpenFile(path)
+endfunction
+
+function! Dojo2Style(i)
+  let path =  a:i['base'].a:i['root_module'].'themes/tundra/'.a:i['module'].'/'.a:i['class'].'.css' 
+  call DojoOpenFile(path)
+endfunction
+
+function! DojoGenerateCommands(from)
+  let dojoTos=['TestPage','TestCode', 'Code','Style','Template']
+  let commandsMap = {'TestPage':'TH','TestCode':'T','Style':'S','Template':'H','Code':'C'}
+  for dojoTo in dojoTos 
+    exec 'command! -buffer '.commandsMap[dojoTo].' call Dojo2'.dojoTo.'(DojoFrom'.a:from.'())'
+  endfor
+endfunction
+
+autocmd BufNewFile,BufRead */src/*.js call DojoGenerateCommands('Code') 
+autocmd BufNewFile,BufRead */src/*/tests/*.js call DojoGenerateCommands('TestCode') 
+autocmd BufNewFile,BufRead */src/*/tests/*.html call DojoGenerateCommands('TestPage') 
+autocmd BufNewFile,BufRead */src/*/templates/*.html call DojoGenerateCommands('Template') 
+autocmd BufNewFile,BufRead */src/*/tundra/*.css call DojoGenerateCommands('Style') 
+
