@@ -84,3 +84,6 @@ autocmd BufNewFile,BufRead */src/*/tests/*.html call DojoGenerateCommands('TestP
 autocmd BufNewFile,BufRead */src/*/templates/*.html call DojoGenerateCommands('Template') 
 autocmd BufNewFile,BufRead */src/*/tundra/*.css call DojoGenerateCommands('Style') 
 
+autocmd BufRead *.js set includeexpr=substitute(substitute(v:fname,'\\.','/','g'),'"','','')
+autocmd BufRead *.js let &path = split(expand('%:p'),'src/')[0].'src/'
+autocmd BufRead *.js set suffixesadd=.js

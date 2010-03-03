@@ -4488,7 +4488,15 @@ function! s:BufSettings()
   if !exists('b:rails_root')
     return ''
   endif
+
   let self = rails#buffer()
+
+  "nicola fix
+  let ft = self.getvar('&filetype')
+  if ft=~'javascript'
+    return
+  end
+
   call s:SetBasePath()
   let rp = s:gsub(self.app().path(),'[ ,]','\\&')
   if stridx(&tags,rp) == -1
