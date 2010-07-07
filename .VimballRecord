@@ -1,2 +1,3 @@
 screen.vba: call delete('/home/nicola/.vim/plugin/screen.vim')|call delete('/home/nicola/.vim/doc/screen.txt')
 twitvim-0.4.6.vba: call delete('/home/nicola/.vim/plugin/twitvim.vim')|call delete('/home/nicola/.vim/doc/twitvim.txt')
+rails.vba: call delete('/home/nicola/.vim/autoload/rails.vim')|call delete('/home/nicola/.vim/plugin/rails.vim')|call delete('/home/nicola/.vim/doc/rails.txt')

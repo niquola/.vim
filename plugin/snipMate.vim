@@ -34,7 +34,7 @@ fun! MakeSnip(scope, trigger, content, ...)
 	elseif multisnip | let {var}[a:scope][a:trigger] += [[a:1, a:content]]
 	else
 		echom 'Warning in snipMate.vim: Snippet '.a:trigger.' is already defined.'
-				\ .' See :h multi_snip for help on snippets with multiple matches.'
+					\ .' See :h multi_snip for help on snippets with multiple matches.'
 	endif
 endf
 
@@ -62,7 +62,7 @@ fun s:ProcessFile(file, ft, ...)
 		echom "Error in snipMate.vim: couldn't read file: ".a:file
 	endtry
 	return a:0 ? MakeSnip(a:ft, a:1, text, keyword)
-			\  : MakeSnip(a:ft, keyword, text)
+				\  : MakeSnip(a:ft, keyword, text)
 endf
 
 fun! ExtractSnipsFile(file, ft)
@@ -113,11 +113,11 @@ endf
 " Define "aliasft" snippets for the filetype "realft".
 fun s:DefineSnips(dir, aliasft, realft)
 	for path in split(globpath(a:dir, a:aliasft.'/')."\n".
-					\ globpath(a:dir, a:aliasft.'-*/'), "\n")
+				\ globpath(a:dir, a:aliasft.'-*/'), "\n")
 		call ExtractSnips(path, a:realft)
 	endfor
 	for path in split(globpath(a:dir, a:aliasft.'.snippets')."\n".
-					\ globpath(a:dir, a:aliasft.'-*.snippets'), "\n")
+				\ globpath(a:dir, a:aliasft.'-*.snippets'), "\n")
 		call ExtractSnipsFile(path, a:realft)
 	endfor
 endf

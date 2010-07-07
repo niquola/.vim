@@ -60,7 +60,7 @@ nmap <C-V> "+gP
 " open explorer
 map <C-E> :Explore<CR>
 " in normal mode space is visual selection 
-nmap <S-b> :BufferExplorer<cr>
+nmap <S-b> :LustyBufferExplorer<cr>
 nmap <S-e> :BufExplorer<cr>
 "  2}}}
 " line manipulation maps  2
@@ -82,7 +82,7 @@ map <c-space> \lb
 map <s-space> \be
 nmap \fo :!firefox -new-tab % &<cr> 
 " Поиск и замена слова под курсором
-nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
+nmap \s :%s/\<<c-r>=expand("<cword>")<cr>\>/
 " nmap <c-m> :MarksBrowser<cr>
 nmap ' `
 "fs brousing navigation  
@@ -98,14 +98,13 @@ cabbr vimrc e ~/.vim/.vimrc<cr>
 augroup RubyTests
     au!
     autocmd BufRead,BufNewFile *.rb,*.rb
-    \ :compiler ruby
+                \ :compiler ruby
     autocmd BufRead,BufNewFile *_test.rb,test_*.rb
-    \ :compiler rubyunit
+                \ :compiler rubyunit
     autocmd BufRead,BufNewFile *.rb,*.rb
-    \ :map <buffer> <F5> :make %<cr>
+                \ :map <buffer> <F5> :make %<cr>
 augroup END
 map <F10> :cal VimCommanderToggle()<cr>
-
 let twitvim_login = "niquola:rjkzysx"
 " the last string is instructions for vim about this file
 " vim:ft=vim:fdm=marker:ff=unix:nowrap:tabstop=4:shiftwidth=4:softtabstop=4:smarttab:shiftround:expandtab
