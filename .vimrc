@@ -106,5 +106,6 @@ augroup RubyTests
 augroup END
 map <F10> :cal VimCommanderToggle()<cr>
 let twitvim_login = "niquola:rjkzysx"
+set hidden
 " the last string is instructions for vim about this file
 " vim:ft=vim:fdm=marker:ff=unix:nowrap:tabstop=4:shiftwidth=4:softtabstop=4:smarttab:shiftround:expandtab

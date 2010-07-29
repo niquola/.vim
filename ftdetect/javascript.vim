@@ -1,1 +1,1 @@
-"au BufWritePost *.js call JSLint()
+au BufWritePost *.js call JSLint()

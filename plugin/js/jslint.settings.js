@@ -35,7 +35,7 @@ var jslintOpts = {
 	// if the scan should stop on first error
 	//plusplus: true,
 	// if ++ and -- should not be allowed
-	predef: ['document','setTimeout','clearTimeout','setInterval','clearInterval','parseToInt','parseToFloat','window','dojo', 'dijit', 'app','medapp', 'mbe', 'console', 'dojox','doh','mui','medhub','confirm','alert'],
+	predef: ['document','setTimeout','clearTimeout','setInterval','clearInterval','parseToInt','parseToFloat','window','dojo', 'dijit', 'app','medapp', 'mbe', 'console', 'dojox','doh','mui','medhub','confirm','alert','prompt'],
 	//an array of strings, the names of predefined global variables
 	//regexp: true,
 	// if . should not be allowed in RegExp literals
