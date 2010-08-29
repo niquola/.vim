@@ -50,11 +50,9 @@ set cpo-=C
 "
 "   :make -c %<CR>
 "
-CompilerSet makeprg=ruby 
+CompilerSet makeprg=ruby\ -c\ -W3\ $*
 
-CompilerSet errorformat=
-    \%f:%l:in\ %m,
-    \%+ESyntaxError:\ %f:%l:%m
+CompilerSet errorformat=%E%f:%l:\ %m
 
 
 let &cpo = s:cpo_save

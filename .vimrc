@@ -86,7 +86,8 @@ nmap \s :%s/\<<c-r>=expand("<cword>")<cr>\>/
 " nmap <c-m> :MarksBrowser<cr>
 nmap ' `
 "fs brousing navigation  
-let g:netrw_list_hide='\~$,\~\*$,\.swp$,\.svn'
+let g:netrw_list_hide ='\~$,\~\*$,\.swo$,\.swp$,\.svn'
+let g:netrw_keepdir =0
 " automatization  
 "open file in firefox
 au BufNewFile,BufRead *.as set filetype=actionscript
@@ -104,8 +105,11 @@ augroup RubyTests
     autocmd BufRead,BufNewFile *.rb,*.rb
                 \ :map <buffer> <F5> :make %<cr>
 augroup END
-map <F10> :cal VimCommanderToggle()<cr>
 let twitvim_login = "niquola:rjkzysx"
 set hidden
+set undofile
+"set autochdir
+set history=2000
+"set acd " auto change directory 
 " the last string is instructions for vim about this file
 " vim:ft=vim:fdm=marker:ff=unix:nowrap:tabstop=4:shiftwidth=4:softtabstop=4:smarttab:shiftround:expandtab

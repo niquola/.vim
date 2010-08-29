@@ -14,7 +14,6 @@ fun! FormatJs()
 endfun
 "run jslint
 fun! JSLint()
- "silent execute "silent !cat % |js ".s:path."runjslint.js % ".s:path." > ".s:temp_jslint
  silent execute "!echo %:p > /tmp/jslintfile"
  silent execute "!cat % > /tmp/jslint |js ~/.vim/plugin/js/runjslint.js >".s:temp_jslint
  silent execute "silent cf ".s:temp_jslint

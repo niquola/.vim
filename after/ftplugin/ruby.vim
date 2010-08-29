@@ -4,4 +4,10 @@
 "let b:folded = 1
 "call Foldsearch("")
 "compiler ruby
-"map <buffer> <F5> :make % <cr>
+
+fun! SyntaxRb()
+ silent make %
+ botright cw
+ execute "normal \<c-l>"
+endfun
+map <buffer> <F4> :call SyntaxRb()<cr>
